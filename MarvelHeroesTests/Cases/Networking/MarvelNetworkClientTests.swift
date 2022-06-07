@@ -89,7 +89,7 @@ class MarvelNetworkClientTests: QuickSpec {
                 var dataTask: MockURLSessionTask!
                 
                 beforeEach {
-                    dataTask = sut.fetchCharacters(query: nil, page: 0, completion: { _, _ in }) as? MockURLSessionTask
+                    dataTask = sut.fetchCharacters(query: "query", page: 2, completion: { _, _ in }) as? MockURLSessionTask
                 }
                 
                 it("calls expected URL") {
@@ -100,12 +100,9 @@ class MarvelNetworkClientTests: QuickSpec {
                     let urlComponents = URLComponents(string: dataTask.url.absoluteString)
                     let queryItems = urlComponents?.queryItems ?? []
                     
-//                    let expectedTimestamp = Date().timeIntervalSince1970
-//                    let expectedHash = sut.generateAPIHash(timestamp: expectedTimestamp)
-                    
-//                    expect(queryItems.first(where: { $0.name == "hash" })?.value).to(equal(expectedHash))
+                    expect(queryItems.first(where: { $0.name == "nameStartsWith" })?.value).to(equal("query"))
                     expect(queryItems.first(where: { $0.name == "apikey" })?.value).to(equal(publicKey))
-//                    expect(queryItems.first(where: { $0.name == "ts" })?.value).to(equal("\(expectedTimestamp)"))
+                    expect(queryItems.first(where: { $0.name == "offset" })?.value).to(equal("\(sut.limit*2)"))
                 }
                 
                 it("calls resume task") {

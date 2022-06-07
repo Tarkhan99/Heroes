@@ -32,6 +32,8 @@ class MarvelNetworkClient: CharactersService {
     var publicKey: String
     var privateKey: String
     
+    let limit = 20
+    
     init(baseURL: URL, session: URLSessionProtocol, responseQueue: DispatchQueue?, publicKey: String, privateKey: String) {
         self.baseURL = baseURL
         self.session = session
@@ -62,7 +64,7 @@ class MarvelNetworkClient: CharactersService {
             queryItems.append(URLQueryItem(name: "nameStartsWith", value: searchQuery))
         }
         
-        queryItems.append(URLQueryItem(name: "offset", value: "\(page*20)"))
+        queryItems.append(URLQueryItem(name: "offset", value: "\(page*limit)"))
         
         components?.queryItems = queryItems
                 

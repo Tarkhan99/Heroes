@@ -254,7 +254,6 @@
 		7B6996D4284BEFF3008E9F8B /* Cases */ = {
 			isa = PBXGroup;
 			children = (
-				7B7EEE51284EBF5B001461DE /* Application */,
 				7B197DAA284DDEC700172842 /* Networking */,
 				7B6996F6284C20F6008E9F8B /* Modules */,
 				7B6996F1284C1CD2008E9F8B /* Cells */,
@@ -343,13 +342,6 @@
 				7B7EEE4D284EA9D2001461DE /* CharacterDetailsViewModelTests.swift */,
 			);
 			path = Details;
-			sourceTree = "<group>";
-		};
-		7B7EEE51284EBF5B001461DE /* Application */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Application;
 			sourceTree = "<group>";
 		};
 		7BEFBD50284CDB6600FF7CDB /* Mocks */ = {
